@@ -15,3 +15,8 @@ Faire un `npm install` afin d'installer toutes les dépendances du projet.
 **Question : Si vous regardez le fichier README.md du projet vous voyez que trois commandes sont indiquées, quel est le but de chacune ?**    
 `npm install` sert  installer toutes les dépendance du projet (cf package.json).     
 `npm run dev` 
+
+**Question : Une fois que tout fonctionne faites un premier commit ( vous aurez surement besoin d'initialiser le repository git ). Quelle est la commande à utiliser ?**     
+La commande à utiliser est `git init`
+
+## 2) Ecran d'accueil.
