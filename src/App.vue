@@ -1,21 +1,19 @@
 <template>
   <div id="app">
     <h1>{{ appName }}</h1>
-    <img src="./src/assets/coffee_icon.png"/>
+    <a href="/#/"><img src="./src/assets/coffee_icon.png"/></a>
     <h2>Que voulez vous faire ?</h2>
+
     <div>
       <button class="coffee-button" @click="onMachinesListClick">Consulter la liste des machines</button>
       <button class="coffee-button" @click="onMapClick">Voir la carte</button>
     </div>
-    <machines-list></machines-list>
-    <machines-map></machines-map>
+
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import MachinesList from './MachinesList.vue'
-import MachinesMap from './MachinesMap.vue'
-
 
 export default {
   name: 'app',
@@ -26,17 +24,15 @@ export default {
   },
   methods: {
     onMachinesListClick() {
-      alert('Consulter la liste des machines');
+      window.alert('Consulter la liste des machines');
+      window.location.href = '/#/list';
     },
     onMapClick() {
-      alert('Voir la carte');
+      window.alert('Voir la carte');
+      window.location.href = '/#/map';
     }
-  },
-  components: {
-    'machines-list': MachinesList,
-    'machines-map': MachinesMap
   }
-
+  
 }
 </script>
 
@@ -79,5 +75,9 @@ a {
   margin: 5px;
   border: none;
   color: rgb(255, 255, 255);
+}
+
+.coffee-button:hover {
+  background-color: #35495e;
 }
 </style>
