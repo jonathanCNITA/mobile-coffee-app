@@ -7,10 +7,16 @@
       <button class="coffee-button" @click="onMachinesListClick">Consulter la liste des machines</button>
       <button class="coffee-button" @click="onMapClick">Voir la carte</button>
     </div>
+    <machines-list></machines-list>
+    <machines-map></machines-map>
   </div>
 </template>
 
 <script>
+import MachinesList from './MachinesList.vue'
+import MachinesMap from './MachinesMap.vue'
+
+
 export default {
   name: 'app',
   data () {
@@ -25,7 +31,12 @@ export default {
     onMapClick() {
       alert('Voir la carte');
     }
+  },
+  components: {
+    'machines-list': MachinesList,
+    'machines-map': MachinesMap
   }
+
 }
 </script>
 
