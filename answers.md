@@ -20,3 +20,7 @@ Faire un `npm install` afin d'installer toutes les dépendances du projet.
 La commande à utiliser est `git init`
 
 ## 2) Ecran d'accueil.
+
+## 4) Mise en place d'un routeur
+
+**Question : quelle est la différence entre npm install vue-router et npm install --save vue-router ? Laquelle est à privilégier ici ?**     
