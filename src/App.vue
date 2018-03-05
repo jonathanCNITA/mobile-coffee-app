@@ -1,6 +1,12 @@
 <template>
   <div id="app">
     <h1>{{ appName }}</h1>
+    <img src="./src/assets/coffee_icon.png"/>
+    <h2>Que voulez vous faire ?</h2>
+    <div>
+      <button class="coffee-button" @click="onMachinesListClick">Consulter la liste des machines</button>
+      <button class="coffee-button" @click="onMapClick">Voir la carte</button>
+    </div>
   </div>
 </template>
 
@@ -10,6 +16,14 @@ export default {
   data () {
     return {
       appName: 'COFFEE APP'
+    }
+  },
+  methods: {
+    onMachinesListClick() {
+      alert('Consulter la liste des machines');
+    },
+    onMapClick() {
+      alert('Voir la carte');
     }
   }
 }
@@ -46,5 +60,13 @@ li {
 
 a {
   color: #42b983;
+}
+
+.coffee-button {
+  background-color: #42b883;
+  padding: 20px;
+  margin: 5px;
+  border: none;
+  color: rgb(255, 255, 255);
 }
 </style>
