@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="machine">
 		<h1>Machine {{ name }}</h1>
 		<h3 :class="{green: status, red: !status}">Status {{ getStatus }}</h3>
 		<h2>{{ dateReadable }}</h2>
@@ -11,11 +11,12 @@
 	import moment from 'moment'
 
 	export default {
+		props:['machine'],
 		data() {
 			return {
-				name: 'What else ?',
-				status: true,
-				checkedAt: new Date()
+				name: this.machine.name,
+				status: this.machine.status,
+				checkedAt: this.machine.checkedAt
 			}
 		},
 		computed: {
@@ -25,15 +26,17 @@
 			dateReadable() {
 				return moment(this.checkedAt).format('L, LTS');
 			}
-		},
-		filter: {
-
 		}
 	}
 
 </script>
 
-<style type="text/css">
+<style type="text/css" scoped>
+	.machine {
+		border: 1px solid #000000;
+		margin-top: 10px;
+	}
+
 	.red {
 		color: red;
 	}
@@ -41,4 +44,5 @@
 	.green {
 		color: green;
 	}
+
 </style>
