@@ -11,7 +11,6 @@ const routes = [
 	{ path: '/list', component: MachinesList },
 	{ path: '/map', component: MachinesMap},
 	{ path: '/machine', component: Machine}
-
 ];
 
 const router = new VueRouter({
