@@ -2,7 +2,7 @@
 	<div class="machine">
 		<h1>Machine {{ name }}</h1>
 		<h3 :class="{green: status, red: !status}">Status {{ getStatus }}</h3>
-		<h2>{{ dateReadable }}</h2>
+		<h2>Last checked: {{ dateReadable }}</h2>
 	</div>
 </template>
 
@@ -24,7 +24,8 @@
 				return this.status ? 'OK' : 'KO';
 			},
 			dateReadable() {
-				return moment(this.checkedAt).format('L, LTS');
+				//return moment(this.checkedAt).format('L, LTS');
+				return this.checkedAt.toLocaleString();
 			}
 		}
 	}
