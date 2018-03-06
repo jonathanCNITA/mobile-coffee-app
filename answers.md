@@ -24,3 +24,15 @@ La commande à utiliser est `git init`
 ## 4) Mise en place d'un routeur
 
 **Question : quelle est la différence entre npm install vue-router et npm install --save vue-router ? Laquelle est à privilégier ici ?**     
+
+
+## 7) Création d'une map
+
+### 7.1) Choisir le bon package.
+
+**Question : Prenez le temps de regarder la page, qu'est ce qui vous inspire confiance ? Ou au contraire méfiance ?**     
+confiance: 
+
+
+
+méfiance:
