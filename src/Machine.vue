@@ -34,8 +34,10 @@
 
 <style type="text/css" scoped>
 	.machine {
+		margin: auto;
 		border: 1px solid #000000;
 		margin-top: 10px;
+		max-width:  50vw;
 	}
 
 	.red {
