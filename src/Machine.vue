@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<h1>Machine {{ name }}</h1>
-		<h3>Status {{ getStatus }}</h3>
+		<h3 :class="{green: status, red: !status}">Status {{ getStatus }}</h3>
 		<h2>Last time checked: {{ checkedAt }}</h2>
 	</div>
 </template>
