@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
+import * as VueGoogleMaps from 'vue2-google-maps'
+
 import MachinesList from './MachinesList.vue'
 import MachinesMap from './MachinesMap.vue'
 import Machine from './Machine.vue'
