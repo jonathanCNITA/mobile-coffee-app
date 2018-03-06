@@ -7,8 +7,7 @@
 </template>
 
 <script>
-	import Machine from './Machine.vue'
-
+	
 	export default {
 		data() {
 			return {
@@ -23,11 +22,9 @@
 				        name: 'Broken',
 				        status: false,
 				        checkedAt: new Date(),
-				    }]
+				    }
+				]
 			}
-		},
-		components: {
-			'app-machine': Machine
 		}
 	}
 </script>
