@@ -1,12 +1,20 @@
 import Vue from 'vue';
 import App from './App.vue';
 import VueRouter from 'vue-router';
+import * as VueGoogleMaps from 'vue2-google-maps'
 
 import MachinesList from './MachinesList.vue';
 import MachinesMap from './MachinesMap.vue';
 import Machine from './Machine.vue';
 
 Vue.use(VueRouter);
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyAyOGVEWrpMADBqRhgT6FuvxUweYRmyjJ8',
+    
+  }
+})
 
 
 Vue.component('app-machine', Machine);
