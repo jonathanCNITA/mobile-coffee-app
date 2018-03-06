@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>{{ appName }}</h1>
-    <a href="/#/"><img src="./src/assets/coffee_icon.png"/></a>
+    <a href="/#/"><img src="./assets/coffee_icon.png"/></a>
     <h2>Que voulez vous faire ?</h2>
 
     <div>
