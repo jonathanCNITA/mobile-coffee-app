@@ -5,8 +5,8 @@
     <h2>Que voulez vous faire ?</h2>
 
     <div>
-      <button class="coffee-button" @click="onMachinesListClick">Consulter la liste des machines</button>
-      <button class="coffee-button" @click="onMapClick">Voir la carte</button>
+      <router-link to="list"><button class="coffee-button" >Consulter la liste des machines</button></router-link>
+      <router-link to="map"><button class="coffee-button">Voir la carte</button></router-link>
     </div>
 
     <router-view></router-view>
