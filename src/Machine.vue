@@ -3,6 +3,7 @@
 		<h1>Machine {{ name }}</h1>
 		<h3 :class="{green: status, red: !status}">Status {{ getStatus }}</h3>
 		<h2>Last checked: {{ dateReadable }}</h2>
+		<button>Get more info</button>
 	</div>
 </template>
 

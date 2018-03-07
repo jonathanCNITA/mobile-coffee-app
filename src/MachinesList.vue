@@ -12,7 +12,7 @@
 		props: ['machines'],
 		data() {
 			return {
-				machinesA: [
+				machinestest: [
 					{
 				        id: 1,
 				        name: 'What else ?',
