@@ -9,32 +9,63 @@
       <router-link to="map"><button class="coffee-button">Voir la carte</button></router-link>
     </div>
 
-    <router-view></router-view>
+    <router-view :machines="machines"></router-view>
   </div>
 </template>
 
-<script>
 
-export default {
-  name: 'app',
-  data () {
-    return {
-      appName: 'COFFEE APP'
-    }
-  },
-  methods: {
-    onMachinesListClick() {
-      window.alert('Consulter la liste des machines');
-      window.location.href = '/#/list';
+<script>
+  import axios from 'axios';
+
+  export default {
+    name: 'app',
+    data () {
+      return {
+        appName: 'COFFEE APP',
+        machines: [
+            {
+                  id: 1,
+                  name: 'What else ?',
+                  status: true,
+                  checkedAt: new Date(),
+                  latitude: 10,
+                  longitude: 10
+              }, {
+                  id: 2,
+                  name: 'Broken',
+                  status: false,
+                  checkedAt: new Date(),
+                  latitude: 11,
+                  longitude: 9.6
+              }
+          ]
+      }
     },
-    onMapClick() {
-      window.alert('Voir la carte');
-      window.location.href = '/#/map';
-    }
+    methods: {
+      onMachinesListClick() {
+        window.alert('Consulter la liste des machines');
+        window.location.href = '/#/list';
+      },
+      onMapClick() {
+        window.alert('Voir la carte');
+        window.location.href = '/#/map';
+      }
+    },
+    created() {
+        axios.get(`https://machine-api-campus.herokuapp.com/api/machines`)
+        .then(response => {
+              console.log(response.data);
+              this.machines = response.data;
+          })
+        .catch(e => {
+          this.errors.push(e)
+        });
+      }
+    
   }
-  
-}
+
 </script>
+
 
 <style scoped>
 #app {
