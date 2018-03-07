@@ -3,7 +3,7 @@
 		<h1>Machine {{ name }}</h1>
 		<h3 :class="{green: status, red: !status}">Status {{ getStatus }}</h3>
 		<h2>Last checked: {{ dateReadable }}</h2>
-		<button>Get more info</button>
+		<router-link to="/machine/form/" :test="id"><button>Get more info</button></router-link>
 	</div>
 </template>
 
@@ -17,7 +17,8 @@
 			return {
 				name: this.machine.name,
 				status: this.machine.status,
-				checkedAt: this.machine.checkedAt
+				checkedAt: this.machine.checkedAt,
+				id: this.machine.id
 			}
 		},
 		computed: {
@@ -28,7 +29,7 @@
 				//return moment(this.checkedAt).format('L, LTS');
 				return this.checkedAt.toLocaleString();
 			}
-		}
+		},
 	}
 
 </script>
