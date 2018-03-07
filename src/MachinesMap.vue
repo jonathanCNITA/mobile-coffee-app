@@ -20,6 +20,7 @@
 </template>
 
 <script>
+	import axios from 'axios';
 	
 	export default {
 		data() {
@@ -53,12 +54,16 @@
 				]
 			}
 		},
-		methods: {
-			addPositionAttribute(obj) {
-				obj.position = { lat: Number(obj.latitude), lng: Number(obj.longitude)};
-				console.log(obj.position);
-				return obj.position;
-			}
+		created() {
+			axios.get(`https://machine-api-campus.herokuapp.com/api/machines`)
+			.then(response => {
+	      		//console.log(response.data);
+	      		this.nmarkers = response.data;
+
+	  		})
+			.catch(e => {
+				this.errors.push(e)
+			});
 		}
 	}
 </script>
