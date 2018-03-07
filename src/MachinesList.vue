@@ -9,9 +9,10 @@
 <script>
 	
 	export default {
+		props: ['machines'],
 		data() {
 			return {
-				machines: [
+				machinesA: [
 					{
 				        id: 1,
 				        name: 'What else ?',
