@@ -54,7 +54,7 @@
     created() {
         axios.get(`https://machine-api-campus.herokuapp.com/api/machines`)
         .then(response => {
-              console.log(response.data);
+              console.log(response);
               this.machines = response.data;
           })
         .catch(e => {

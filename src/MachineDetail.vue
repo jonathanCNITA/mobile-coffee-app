@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<h1>Machine Detail</h1>
+		<hr/>
 		<p>ID: {{ selectedMachine.id }}</p>
 		<p>NAME: {{ selectedMachine.name }}</p>
 		<p>STATUS: {{ selectedMachine.status }}</p>

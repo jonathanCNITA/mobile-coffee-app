@@ -12,10 +12,11 @@
 		      v-for="(m, index) in machines"
 		      :position="{lat: Number(m.latitude), lng: Number(m.longitude)}"
 		      :clickable="true"
-		      :draggable="true"
+		      :draggable="false"
 		      @click="center=m.position"
 		    ></gmap-marker>
 		</gmap-map>
+
 		<p @click="logDatas">Log markers Datas for dev purpose only</p>
 	</div>
 </template>
