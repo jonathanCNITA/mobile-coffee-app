@@ -3,7 +3,7 @@
 		<h1>Machine {{ name }}</h1>
 		<h3 :class="{green: status, red: !status}">Status {{ getStatus }}</h3>
 		<h2>Last checked: {{ dateReadable }}</h2>
-		<router-link to="/machine/form/" :test="id"><button>Get more info</button></router-link>
+		<router-link :to="'detail/'+ id"><button class="coffee-button">Details</button></router-link>
 	</div>
 </template>
 
@@ -48,6 +48,18 @@
 
 	.green {
 		color: green;
+	}
+
+	.coffee-button {
+	  background-color: #42b883;
+	  padding: 10px;
+	  margin: 5px;
+	  border: none;
+	  color: rgb(255, 255, 255);
+	}
+
+	.coffee-button:hover {
+	  background-color: #35495e;
 	}
 
 </style>

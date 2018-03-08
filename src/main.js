@@ -6,7 +6,7 @@ import * as VueGoogleMaps from 'vue2-google-maps'
 import MachinesList from './MachinesList.vue';
 import MachinesMap from './MachinesMap.vue';
 import Machine from './Machine.vue';
-import MachineForm from './MachineForm.vue';
+import MachineDetail from './MachineDetail.vue';
 
 Vue.use(VueRouter);
 
@@ -22,15 +22,16 @@ Vue.component('app-machine', Machine);
 
 
 const routes = [
-	{ path: '/list', component: MachinesList },
+	{ path: '/list', component: MachinesList},
 	{ path: '/map', component: MachinesMap},
 	{ path: '/machine', component: Machine},
-  { path: '/machine/form/:id', component: MachineForm, }
+  { path: '/detail/:id', component: MachineDetail}
   
 ];
 
 const router = new VueRouter({
-	routes
+	routes,
+
 });
 
 

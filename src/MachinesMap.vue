@@ -7,14 +7,14 @@
 		  :zoom="2"
 		  style="width: 100%; height: 800px"
 		>
-		<gmap-marker
-	      :key="index"
-	      v-for="(m, index) in machines"
-	      :position="{lat: Number(m.latitude), lng: Number(m.longitude)}"
-	      :clickable="true"
-	      :draggable="true"
-	      @click="center=m.position"
-	    ></gmap-marker>
+			<gmap-marker
+		      :key="index"
+		      v-for="(m, index) in machines"
+		      :position="{lat: Number(m.latitude), lng: Number(m.longitude)}"
+		      :clickable="true"
+		      :draggable="true"
+		      @click="center=m.position"
+		    ></gmap-marker>
 		</gmap-map>
 		<p @click="logDatas">Log markers Datas for dev purpose only</p>
 	</div>

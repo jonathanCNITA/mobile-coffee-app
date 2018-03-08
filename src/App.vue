@@ -1,12 +1,12 @@
 <template>
   <div id="app">
     <h1>{{ appName }}</h1>
-    <a href="/#/"><img src="./assets/coffee_icon.png"/></a>
+    <router-link to="/" replace><img src="./assets/coffee_icon.png"/></router-link>
     <h2>Que voulez vous faire ?</h2>
 
     <div>
-      <router-link to="list"><button class="coffee-button" >Consulter la liste des machines</button></router-link>
-      <router-link to="map"><button class="coffee-button">Voir la carte</button></router-link>
+      <router-link to="/list" replace><button class="coffee-button" >Consulter la liste des machines</button></router-link>
+      <router-link to="/map" replace><button class="coffee-button">Voir la carte</button></router-link>
     </div>
 
     <router-view :machines="machines"></router-view>
@@ -25,14 +25,14 @@
         machines: [
             {
                   id: 1,
-                  name: 'What else ?',
+                  name: 'example',
                   status: true,
                   checkedAt: new Date(),
                   latitude: 10,
                   longitude: 10
               }, {
                   id: 2,
-                  name: 'Broken',
+                  name: 'example 2',
                   status: false,
                   checkedAt: new Date(),
                   latitude: 11,
