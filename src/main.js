@@ -2,14 +2,13 @@ import Vue from 'vue';
 import App from './App.vue';
 import VueRouter from 'vue-router';
 import * as VueGoogleMaps from 'vue2-google-maps'
-import axios from 'axios';
 
 import MachinesList from './MachinesList.vue';
 import MachinesMap from './MachinesMap.vue';
 import Machine from './Machine.vue';
+import MachineDetail from './MachineDetail.vue';
 
 Vue.use(VueRouter);
-Vue.use(axios);
 
 Vue.use(VueGoogleMaps, {
   load: {
@@ -23,13 +22,16 @@ Vue.component('app-machine', Machine);
 
 
 const routes = [
-	{ path: '/list', component: MachinesList },
+	{ path: '/list', component: MachinesList},
 	{ path: '/map', component: MachinesMap},
-	{ path: '/machine', component: Machine}
+	{ path: '/machine', component: Machine},
+  { path: '/detail/:id', component: MachineDetail}
+  
 ];
 
 const router = new VueRouter({
-	routes
+	routes,
+
 });
 
 

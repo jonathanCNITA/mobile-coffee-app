@@ -3,6 +3,7 @@
 		<h1>Machine {{ name }}</h1>
 		<h3 :class="{green: status, red: !status}">Status {{ getStatus }}</h3>
 		<h2>Last checked: {{ dateReadable }}</h2>
+		<router-link :to="'detail/'+ id"><button class="coffee-button">Details</button></router-link>
 	</div>
 </template>
 
@@ -16,7 +17,8 @@
 			return {
 				name: this.machine.name,
 				status: this.machine.status,
-				checkedAt: this.machine.checkedAt
+				checkedAt: this.machine.checkedAt,
+				id: this.machine.id
 			}
 		},
 		computed: {
@@ -27,7 +29,7 @@
 				//return moment(this.checkedAt).format('L, LTS');
 				return this.checkedAt.toLocaleString();
 			}
-		}
+		},
 	}
 
 </script>
@@ -46,6 +48,18 @@
 
 	.green {
 		color: green;
+	}
+
+	.coffee-button {
+	  background-color: #42b883;
+	  padding: 10px;
+	  margin: 5px;
+	  border: none;
+	  color: rgb(255, 255, 255);
+	}
+
+	.coffee-button:hover {
+	  background-color: #35495e;
 	}
 
 </style>
