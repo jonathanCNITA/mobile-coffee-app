@@ -7,6 +7,7 @@
     <div>
       <router-link to="/list" replace><button class="coffee-button" >Consulter la liste des machines</button></router-link>
       <router-link to="/map" replace><button class="coffee-button">Voir la carte</button></router-link>
+      <router-link to="/create" replace><button class="coffee-button">Creer</button></router-link>
     </div>
     <p class="red" v-if="error != null">toto in da shit</p>
     <p v-if="loading">Loading</p>
