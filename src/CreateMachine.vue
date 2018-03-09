@@ -23,6 +23,8 @@
           	<button type="submit">Add</button>
     	</form>
 
+    	<button @click="getUserCoords">Get user position</button>
+
 		<gmap-map
     		class="map-google"
       		:center="{lat:10.0, lng:10.0}"
@@ -62,7 +64,7 @@
 
 				axios.post('https://machine-api-campus.herokuapp.com/api/machines', {
 				    name: 'Fred',
-				    status: 'False',
+				    status: false,
 				    latitude: 12,
 				    longitude: 10,
 				    checkedAt: getDateChecked()
@@ -81,12 +83,12 @@
 			},
 			sub(event) {
      			event.preventDefault();
-      			console.log(`You will send -> lattitude: ${this.markerlat} | longitude: ${this.markerlng}`);
+      			console.log(`You will send -> lattitude: ${this.machine.markerlat} | longitude: ${this.machine.markerlng}`);
       			axios.post('https://machine-api-campus.herokuapp.com/api/machines', {
-				    name: this.name,
-				    status: this.status,
-				    latitude: this.latitude,
-				    longitude: this.longitude,
+				    name: this.machine.name,
+				    status: this.machine.status,
+				    latitude: this.machine.markerlat,
+				    longitude: this.machine.markerlng,
 				    checkedAt: (new Date()).toLocaleString()
 				})
 				.then(function (response) {
@@ -99,11 +101,30 @@
     		getDateChecked() {
 		    	let d = new Date();
 		    	return d.toLocaleString();
+		    },
+		    getUserCoords() {
+		    	let getPosition = function (options) {
+		  			return new Promise(function (resolve, reject) {
+		    				navigator.geolocation.getCurrentPosition(resolve, reject, options);
+		  				});
+				}
+
+				getPosition()
+		  		.then((position) => {
+		    		console.log(position);
+		    		this.machine.markerlat = position.coords.latitude;
+		    		this.machine.markerlng = position.coords.longitude;
+
+		  		})
+		  		.catch((err) => {
+		    		console.error(err.message);
+		  		});
+		    	
 		    }
 		},
 		computed: {
 			updateMarker() {
-				return {lat: this.machine.latitude, lng: this.machine.longitude};
+				return { lat: this.machine.latitude, lng: this.machine.longitude };
 			},
 			getCoords() {
 		      return  { lat: this.machine.markerlat, lng: this.machine.markerlng };
