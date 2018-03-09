@@ -8,8 +8,10 @@ import MachinesMap from './MachinesMap.vue';
 import Machine from './Machine.vue';
 import MachineDetail from './MachineDetail.vue';
 import CreateMachine from './CreateMachine.vue';
+import ToggleButton from 'vue-js-toggle-button';
 
 Vue.use(VueRouter);
+Vue.use(ToggleButton);
 
 Vue.use(VueGoogleMaps, {
   load: {

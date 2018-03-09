@@ -2,16 +2,13 @@
 	<div>
 		<h1>Ajouter une machine</h1>
 		<div class="editor">
+			<h3 v-show="machineAdded" @click="closeMachineAdded">machine added</h3>
 			<form @submit="sub" action="#" method="post">
 				<div class="form-item">
 	            	<label for="machineName">Nom machine</label>
 	            	<input id="machineName" v-model="machine.name" :placeholder="machine.name">
 	          	</div>
-	          	<div class="form-item">
-	            	<label for="machineStatus">Status</label>
-	            	<input type="checkbox" id="machineStatus" v-model="machine.status" :placeholder="machine.status">
-	          	</div>
-	          	
+	          	<toggle-button v-model="machine.status"/>
 	          	<div class="form-item">
 	            	<label for="lattitude">lattitude</label>
 	            	<input id="lattitude" v-model="machine.markerlat" :placeholder="machine.markerlat">
@@ -54,7 +51,8 @@
 					markerlat: 10,
       				markerlng: 10,
 					checkedAt: 'nope'
-				}
+				},
+				machineAdded: false
 				
 			}
 		},
@@ -91,12 +89,16 @@
 				    longitude: this.machine.markerlng,
 				    checkedAt: (new Date()).toLocaleString()
 				})
-				.then(function (response) {
-				  console.log(response);
+				.then((response) => {
+					console.log('////////////////////////////');
+				  	console.log(response);
+				  	this.machineAdded = true;
 				})
 				.catch(function (error) {
-				  console.log(error);
+					console.log('#####################');
+				  	console.log(error);
 				});
+				this.machineAdded = true;
     		},
     		getDateChecked() {
 		    	let d = new Date();
@@ -119,6 +121,9 @@
 		  		.catch((err) => {
 		    		console.error(err.message);
 		  		});
+		    },
+		    closeMachineAdded() {
+		    	this.machineAdded = false;
 		    }
 		},
 		computed: {
