@@ -145,7 +145,7 @@ form {
 }
 
 .map-google {
-	max-width: 50%;
+	max-width: 53%;
 	border: 6px solid #35495e;
 	margin-top: 30px;
 }
