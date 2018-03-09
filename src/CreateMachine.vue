@@ -1,30 +1,30 @@
 <template>
 	<div>
 		<h1>Ajouter une machine</h1>
+		<div class="editor">
+			<form @submit="sub" action="#" method="post">
+				<div class="form-item">
+	            	<label for="machineName">Nom machine</label>
+	            	<input id="machineName" v-model="machine.name" :placeholder="machine.name">
+	          	</div>
+	          	<div class="form-item">
+	            	<label for="machineStatus">Status</label>
+	            	<input type="checkbox" id="machineStatus" v-model="machine.status" :placeholder="machine.status">
+	          	</div>
+	          	
+	          	<div class="form-item">
+	            	<label for="lattitude">lattitude</label>
+	            	<input id="lattitude" v-model="machine.markerlat" :placeholder="machine.markerlat">
+	          	</div>
+	          	<div class="form-item">
+	            	<label for="longitude">longitude</label>
+	            	<input id="longitude" v-model="machine.markerlng" :placeholder="machine.markerlng">
+	          	</div>
+	          	<button class="coffee-button" type="submit">Add</button>
+	    	</form>
 
-		<form @submit="sub" action="#" method="post">
-			<div class="form-item">
-            	<label for="machineName">Nom machine</label>
-            	<input id="machineName" v-model="machine.name" :placeholder="machine.name">
-          	</div>
-          	<div class="form-item">
-            	<label for="machineStatus">Status</label>
-            	<input type="checkbox" id="machineStatus" v-model="machine.status" :placeholder="machine.status">
-          	</div>
-          	
-          	<div class="form-item">
-            	<label for="lattitude">lattitude</label>
-            	<input id="lattitude" v-model="machine.markerlat" :placeholder="machine.markerlat">
-          	</div>
-          	<div class="form-item">
-            	<label for="longitude">longitude</label>
-            	<input id="longitude" v-model="machine.markerlng" :placeholder="machine.markerlng">
-          	</div>
-          	<button type="submit">Add</button>
-    	</form>
-
-    	<button @click="getUserCoords">Get user position</button>
-
+	    	<button class="coffee-button" @click="getUserCoords">Get user position</button>
+    	</div>
 		<gmap-map
     		class="map-google"
       		:center="{lat:10.0, lng:10.0}"
@@ -119,7 +119,6 @@
 		  		.catch((err) => {
 		    		console.error(err.message);
 		  		});
-		    	
 		    }
 		},
 		computed: {
@@ -143,5 +142,31 @@ form {
 
 .form-item {
   	margin: 10px;
+}
+
+.map-google {
+	max-width: 50%;
+	border: 6px solid #35495e;
+	margin-top: 30px;
+}
+
+.coffee-button {
+  background-color: #42b883;
+  padding: 10px;
+  margin: 5px;
+  border: none;
+  color: rgb(255, 255, 255);
+  min-width: 400px;
+}
+
+.coffee-button:hover {
+  background-color: #35495e;
+}
+
+.editor {
+	margin: auto;
+	max-width: 50%;
+	padding: 20px;
+	border: 6px solid #35495e;
 }
 </style>
