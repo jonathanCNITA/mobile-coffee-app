@@ -41,7 +41,8 @@
 </template>
 
 <script>
-	
+	import axios from 'axios';
+
 	export default {
 		data() {
 			return {
@@ -50,7 +51,7 @@
 					status: false,
 					markerlat: 10,
       				markerlng: 10,
-					checkedAt: new Date()
+					checkedAt: 'nope'
 				}
 				
 			}
@@ -58,6 +59,20 @@
 		methods: {
 			addMachine() {
 				console.log('nothing');
+
+				axios.post('https://machine-api-campus.herokuapp.com/api/machines', {
+				    name: 'Fred',
+				    status: 'False',
+				    latitude: 12,
+				    longitude: 10,
+				    checkedAt: getDateChecked()
+				})
+				.then(function (response) {
+				  console.log(response);
+				})
+				.catch(function (error) {
+				  console.log(error);
+				});
 			},
 			getMarkerPosition(dt) {
 		      console.log(`lattitude: ${dt.lat()} | longitude: ${dt.lng()}`);
@@ -67,7 +82,24 @@
 			sub(event) {
      			event.preventDefault();
       			console.log(`You will send -> lattitude: ${this.markerlat} | longitude: ${this.markerlng}`);
-    		}
+      			axios.post('https://machine-api-campus.herokuapp.com/api/machines', {
+				    name: this.name,
+				    status: this.status,
+				    latitude: this.latitude,
+				    longitude: this.longitude,
+				    checkedAt: (new Date()).toLocaleString()
+				})
+				.then(function (response) {
+				  console.log(response);
+				})
+				.catch(function (error) {
+				  console.log(error);
+				});
+    		},
+    		getDateChecked() {
+		    	let d = new Date();
+		    	return d.toLocaleString();
+		    }
 		},
 		computed: {
 			updateMarker() {
@@ -75,7 +107,8 @@
 			},
 			getCoords() {
 		      return  { lat: this.machine.markerlat, lng: this.machine.markerlng };
-		    }
+		    },
+		    
 		}
 
 	}
