@@ -7,6 +7,20 @@
 		<p>STATUS: {{ selectedMachine.status }}</p>
 		<p>LAT: {{ selectedMachine.latitude }}</p>
 		<p>LONG: {{ selectedMachine.longitude }}</p>
+		<br>
+		<gmap-map
+    		class="map-google"
+      		:center="getCoords"
+      		:zoom="12"
+      		style="width: 100%; height: 800px"
+    	>
+      	<gmap-marker
+          :key="0"
+          :position="getCoords"
+          :clickable="true"
+          :draggable="false"
+        	></gmap-marker>
+    	</gmap-map>
 	</div>
 </template>
 
@@ -18,6 +32,11 @@
 			return {
 				selectedMachine: {}
 			}
+		},
+		computed: {
+			getCoords() {
+		      return  { lat: Number(this.selectedMachine.latitude), lng: Number(this.selectedMachine.longitude) };
+		    },
 		},
 		created() {
 			let searchMachine = this.$route.params.id;
@@ -31,3 +50,11 @@
 	}
 
 </script>
+
+<style type="text/css">
+	.map-google {
+	max-width: 53%;
+	border: 6px solid #35495e;
+	margin-top: 30px;
+}
+</style>

@@ -46,7 +46,7 @@
 		data() {
 			return {
 				machine : {
-					name: 'unamed',
+					name: 'unknow',
 					status: false,
 					markerlat: 10,
       				markerlng: 10,
@@ -124,6 +124,10 @@
 		    },
 		    closeMachineAdded() {
 		    	this.machineAdded = false;
+		    	this.machine.name = "unknow";
+		    	this.machine.status = false;
+		    	this.machine.markerlat = 10;
+		    	this.machine.markerlng = 10;
 		    }
 		},
 		computed: {
