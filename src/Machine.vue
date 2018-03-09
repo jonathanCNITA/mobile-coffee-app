@@ -2,7 +2,7 @@
 	<div class="machine">
 		<h1>Machine {{ name }}</h1>
 		<h3 :class="{green: status, red: !status}">Status {{ getStatus }}</h3>
-		<h2>Last checked: {{ dateReadable }}</h2>
+		<h2 :class="{red: checkedAt==undefined}">Last checked: {{ dateReadable }}</h2>
 		<router-link :to="'detail/'+ id"><button class="coffee-button">Details</button></router-link>
 	</div>
 </template>
@@ -27,6 +27,9 @@
 			},
 			dateReadable() {
 				//return moment(this.checkedAt).format('L, LTS');
+				if(this.checkedAt === undefined){
+					return "no checked time";
+				}
 				return this.checkedAt.toLocaleString();
 			}
 		},

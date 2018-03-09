@@ -7,6 +7,7 @@ import MachinesList from './MachinesList.vue';
 import MachinesMap from './MachinesMap.vue';
 import Machine from './Machine.vue';
 import MachineDetail from './MachineDetail.vue';
+import CreateMachine from './CreateMachine.vue';
 
 Vue.use(VueRouter);
 
@@ -25,7 +26,8 @@ const routes = [
 	{ path: '/list', component: MachinesList},
 	{ path: '/map', component: MachinesMap},
 	{ path: '/machine', component: Machine},
-  { path: '/detail/:id', component: MachineDetail}
+  { path: '/detail/:id', component: MachineDetail},
+  { path: '/create', component: CreateMachine}
   
 ];
 

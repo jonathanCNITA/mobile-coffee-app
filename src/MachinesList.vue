@@ -15,14 +15,14 @@
 				machinestest: [
 					{
 				        id: 1,
-				        name: 'What else ?',
+				        name: 'test0',
 				        status: true,
 				        checkedAt: new Date(),
 				        latitude: 10,
   						longitude: 10
 				    }, {
 				        id: 2,
-				        name: 'Broken',
+				        name: 'test1',
 				        status: false,
 				        checkedAt: new Date(),
 				        latitude: 11,

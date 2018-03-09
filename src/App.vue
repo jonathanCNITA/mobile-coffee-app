@@ -8,7 +8,9 @@
       <router-link to="/list" replace><button class="coffee-button" >Consulter la liste des machines</button></router-link>
       <router-link to="/map" replace><button class="coffee-button">Voir la carte</button></router-link>
     </div>
-
+    <p class="red" v-if="error != null">toto in da shit</p>
+    <p v-if="loading">Loading</p>
+    <p class="green" v-else-if="error === null">Data loaded</p>
     <router-view :machines="machines"></router-view>
   </div>
 </template>
@@ -38,7 +40,9 @@
                   latitude: 11,
                   longitude: 9.6
               }
-          ]
+          ],
+          loading: false,
+          error: null,
       }
     },
     methods: {
@@ -52,15 +56,18 @@
       }
     },
     created() {
+        this.loading = true;
+
         axios.get(`https://machine-api-campus.herokuapp.com/api/machines`)
         .then(response => {
-              console.log(response);
-              this.machines = response.data;
-          })
-        .catch(e => {
-          this.errors.push(e)
+          this.machines = response.data;
+          this.loading = false;
+        })
+        .catch(err => {
+          this.error = err;
+          this.loading = false;
         });
-      }
+    }
     
   }
 
@@ -98,6 +105,14 @@ li {
 
 a {
   color: #42b983;
+}
+
+.red {
+    color: red;
+  }
+
+.green {
+  color: green;
 }
 
 .coffee-button {
