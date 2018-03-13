@@ -2,7 +2,20 @@
 	<div>
 		<h1>Liste des machines</h1>
 		<hr/>
-		<app-machine v-for="machine in machines" :machine="machine"></app-machine>
+		<div>
+			<p>show</p>
+			<toggle-button 	v-model="showAll"  
+							:labels="{checked: 'all', unchecked: 'only'}">				
+			</toggle-button>
+			<toggle-button 	v-model="showBroken" v-show="!showAll"
+							:labels="{checked: 'OK', unchecked: 'KO'}">
+								
+			</toggle-button>
+		</div>
+		<div v-for="machine in machines">
+			<!-- <h1 v-if="showBroken && machine.status === 'true'">{{ machine.status }}</h1> -->
+			<app-machine  v-if="showAll || (showBroken && getStatusTrueOrFalse(machine.status)) || (!showBroken && !getStatusTrueOrFalse(machine.status))" :machine="machine"></app-machine>
+		</div>
 	</div>
 </template>
 
@@ -12,24 +25,34 @@
 		props: ['machines'],
 		data() {
 			return {
+				showBroken: false,
+				showAll: true,
 				machinestest: [
 					{
 				        id: 1,
 				        name: 'test0',
-				        status: true,
+				        status: false,
 				        checkedAt: new Date(),
 				        latitude: 10,
   						longitude: 10
 				    }, {
 				        id: 2,
 				        name: 'test1',
-				        status: false,
+				        status: 'false',
 				        checkedAt: new Date(),
 				        latitude: 11,
   						longitude: 9.6
 				    }
 				]
 			}
+		},
+		methods: {
+			getStatusTrueOrFalse(status) {
+				if(typeof(status) === 'string') {
+					return status === 'true' ? true : false;	
+				}
+				return status;
+			},
 		}
 	}
 </script>
