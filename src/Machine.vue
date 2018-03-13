@@ -1,7 +1,7 @@
 <template>
 	<div class="machine">
 		<h1>Machine {{ name }}</h1>
-		<h3 :class="{green: status, red: !status}">Status {{ getStatus }}</h3>
+		<h3 :class="{green: getStatus, red: !getStatus}">Status {{ getStatusString }}</h3>
 		<h2 :class="{red: checkedAt==undefined}">Last checked: {{ dateReadable }}</h2>
 		<router-link :to="'detail/'+ id"><button class="coffee-button">Details</button></router-link>
 	</div>
@@ -22,8 +22,18 @@
 			}
 		},
 		computed: {
-			getStatus() {
+			getStatusString() {
+				if(typeof(this.status) === 'string') {
+					return this.status === 'true' ? 'OK' : 'KO';	
+				}
 				return this.status ? 'OK' : 'KO';
+				
+			},
+			getStatus() {
+				if(typeof(this.status) === 'string') {
+					return this.status === 'true' ? true : false;	
+				}
+				return this.status;
 			},
 			dateReadable() {
 				//return moment(this.checkedAt).format('L, LTS');
